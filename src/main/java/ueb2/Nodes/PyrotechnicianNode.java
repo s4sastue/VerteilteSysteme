@@ -72,6 +72,12 @@ public class PyrotechnicianNode extends Node {
     @Override
     protected void engage() {
         state = STATE.ACTIVE;
+        try {
+            // wait randomly upto 20 seconds
+            Thread.sleep(
+                    new Random().nextInt(20*1000)
+            );
+        } catch (InterruptedException ignore) {}
         startFirework();
         state = STATE.PASSIVE;
 
